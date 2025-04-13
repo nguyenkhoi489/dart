@@ -1,4 +1,3 @@
-// Abstract class Employee
 abstract class Employee {
   final String id;
   final String name;
@@ -19,7 +18,6 @@ abstract class Workable {
 class OfficeWorker extends Employee implements Workable {
   final String department;
   final double baseSalary;
-  final double bonus = 1.2;
 
   OfficeWorker(String id, String name, this.department, this.baseSalary)
     : super(id, name);
@@ -32,7 +30,7 @@ class OfficeWorker extends Employee implements Workable {
 
   @override
   double calculateSalary() {
-    return baseSalary * this.bonus;
+    return baseSalary;
   }
 
   @override
@@ -44,7 +42,6 @@ class OfficeWorker extends Employee implements Workable {
 class TechWorker extends Employee implements Workable {
   final String field;
   final double baseSalary;
-  final double bonus = 1.5;
 
   TechWorker(String id, String name, this.field, this.baseSalary)
     : super(id, name);
@@ -57,7 +54,7 @@ class TechWorker extends Employee implements Workable {
 
   @override
   double calculateSalary() {
-    return baseSalary * this.bonus;
+    return baseSalary;
   }
 
   @override
@@ -81,7 +78,6 @@ class Company {
     }
   }
 
-  // Tính tổng lương của công ty
   double getTotalSalary() {
     double total = 0;
     for (var employee in employees) {
@@ -94,9 +90,8 @@ class Company {
 void main() {
   var company = Company();
 
-  company.addEmployee(
-    OfficeWorker('OW001', 'Nguyễn Văn A', 'Kế toán', 10000000),
-  );
+  company.addEmployee(OfficeWorker('001', 'Nguyễn Văn A', 'Kế toán', 10000000));
+
   company.addEmployee(OfficeWorker('OW002', 'Trần Thị B', 'Nhân sự', 12000000));
 
   company.addEmployee(
